@@ -1,9 +1,8 @@
 /* =============================================
    Практическая работа №6 — DOM
-   Финальная версия: style.css
    ============================================= */
 
-/* --- ГЛОБАЛЬНЫЕ СТИЛИ --- */
+/* --- ГЛОБАЛЬНЫЕ СТИЛИ (из Starter Kit) --- */
 *, *::before, *::after { box-sizing: border-box; } /* ПОЧЕМУ: Корректный расчет размеров элементов с учетом padding */
 
 body {
@@ -17,40 +16,39 @@ body {
 body.dark-mode { background: #0f172a; color: #e2e8f0; } /* Фон и текст страницы в темном режиме */
 body.dark-mode .card { background: #1e293b; border-color: #334155; } /* Блоки заданий в темном режиме */
 body.dark-mode .service-card { background: #2d3748; border-color: #4a5568; color: #f7fafc; } /* Карточки в темной теме */
-body.dark-mode .service-card h3 { color: #ffffff; } /* Заголовки карточек становятся белыми */
 
 /* --- ОФОРМЛЕНИЕ КАРТОЧЕК --- */
 .card {
-    background: #fff; padding: 20px; margin-bottom: 20px; /* Белый фон и отступы секций */
-    border-radius: 12px; border: 1px solid #e2e8f0; /* Скругление и границы секций */
-    box-shadow: 0 4px 6px rgba(0,0,0,0.05); /* Легкая тень блоков */
+    background: #fff; padding: 20px; margin-bottom: 20px; 
+    border-radius: 12px; border: 1px solid #e2e8f0; 
+    box-shadow: 0 4px 6px rgba(0,0,0,0.05); 
 }
 
-.form-group { margin-bottom: 12px; display: flex; align-items: center; gap: 10px; } /* Расположение элементов формы */
-input, select { padding: 8px; border-radius: 6px; border: 1px solid #cbd5e1; } /* Стилизация полей ввода */
+.form-group { margin-bottom: 12px; display: flex; align-items: center; gap: 10px; } 
+input, select { padding: 8px; border-radius: 6px; border: 1px solid #cbd5e1; } 
 
-.buttons { display: flex; gap: 10px; flex-wrap: wrap; } /* Контейнер для кнопок */
-button { padding: 10px 16px; border: none; border-radius: 6px; background: #3b82f6; color: #fff; cursor: pointer; } /* Базовый стиль кнопок */
+.buttons { display: flex; gap: 10px; flex-wrap: wrap; } 
+button { padding: 10px 16px; border: none; border-radius: 6px; background: #3b82f6; color: #fff; cursor: pointer; } 
 button.btn-secondary { background: #64748b; } /* Серый цвет для второстепенных кнопок */
 button.btn-danger { background: #ef4444; } /* Красный цвет для кнопок удаления */
 
 /* --- КАТАЛОГ УСЛУГ --- */
-#services-container { display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: 16px; } /* Сетка каталога */
+#services-container { display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: 16px; } 
 .service-card {
-    background: #f8fafc; border: 1px solid #e2e8f0; padding: 16px; /* Оформление карточки */
-    border-radius: 8px; display: flex; flex-direction: column; gap: 10px; /* Структура карточки */
+    background: #f8fafc; border: 1px solid #e2e8f0; padding: 16px; 
+    border-radius: 8px; display: flex; flex-direction: column; gap: 10px;
 }
 
-/* Кнопки карточки в одну строку */
-.card-actions { display: flex; flex-direction: row; gap: 8px; margin-top: auto; } /* Расположение кнопок карточки */
-.card-actions button { flex: 1; padding: 6px; font-size: 0.85rem; } /* Растягивание кнопок карточки */
+.card-actions { display: flex; flex-direction: row; gap: 8px; margin-top: auto; } 
+.card-actions button { flex: 1; padding: 6px; font-size: 0.85rem; } 
 
 /* --- КЛАССЫ СОСТОЯНИЙ --- */
-.service-card.highlight { border-color: #f59e0b; background: #fffbeb; color: #1a202c; } /* ПОЧЕМУ: Желтая подсветка для категории "Разработка" */
-.service-card.hidden { display: none !important; } /* ПОЧЕМУ: Полное скрытие элемента при фильтрации */
+/* ПОЧЕМУ: .highlight используется ТОЛЬКО для Задания 2 (подсветка "Разработки") */
+.service-card.highlight { border-color: #f59e0b; border-width: 2px; background: #fffbeb; color: #1a202c; } 
 
-/* НОВОЕ: Белая звезда и текст при активации избранного */
-.fav-btn.is-active { color: #ffffff !important; } /* ПОЧЕМУ: Реализация требования по изменению цвета текста на белый */
+/* ПОЧЕМУ: .is-active делает текст и звезду БЕЛЫМИ, когда кнопка нажата */
+.fav-btn.is-active { color: #ffffff !important; font-weight: bold; } 
 
-.validation-msg { color: #ef4444; font-size: 0.85rem; } /* Ошибка валидации */
-.empty-msg { text-align: center; color: #94a3b8; font-style: italic; } /* Заглушка каталога */
+.service-card.hidden { display: none !important; } 
+.validation-msg { color: #ef4444; font-size: 0.85rem; } 
+.empty-msg { text-align: center; color: #94a3b8; font-style: italic; }
