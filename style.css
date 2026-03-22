@@ -1,54 +1,56 @@
 /* =============================================
-Практическая работа №6 — DOM
-Starter Kit: style.css
-============================================= */
+   Практическая работа №6 — DOM
+   Финальная версия: style.css
+   ============================================= */
 
-/* ----- СБРОС И БАЗОВЫЕ СТИЛИ ----- */
-*, *::before, *::after { box-sizing: border-box; } /* Установка расчета размеров элементов с учетом внутренних отступов и границ */
+/* --- ГЛОБАЛЬНЫЕ СТИЛИ --- */
+*, *::before, *::after { box-sizing: border-box; } /* ПОЧЕМУ: Корректный расчет размеров элементов с учетом padding */
 
 body {
-    font-family: Arial, sans-serif; /* Шрифт по умолчанию */
+    font-family: Arial, sans-serif; /* ПОЧЕМУ: Установка основного шрифта для всей страницы */
     margin: 0; padding: 20px; /* Внешние и внутренние отступы страницы */
-    background: #f0f4f8; color: #1e293b; /* Базовая цветовая схема фона и текста */
-    transition: background 0.3s ease, color 0.3s ease; /* Плавный переход при смене цветовой темы */
+    background: #f0f4f8; color: #1e293b; /* Светлая цветовая схема */
+    transition: 0.3s ease; /* ПОЧЕМУ: Плавность для смены темы оформления */
 }
 
-/* ----- ТЁМНАЯ ТЕМА (добавляется через JS на body) ----- */
-body.dark-mode { background: #0f172a; color: #e2e8f0; } /* Цвета для темного режима на уровне всего документа */
-body.dark-mode .card { background: #1e293b; box-shadow: 0 2px 8px rgba(0, 0, 0, 0.4); } /* Стили карточек в темной теме */
-body.dark-mode input, body.dark-mode select { background: #334155; color: #e2e8f0; border-color: #475569; } /* Поля ввода в темной теме */
+/* --- ТЕМНАЯ ТЕМА --- */
+body.dark-mode { background: #0f172a; color: #e2e8f0; } /* Фон и текст страницы в темном режиме */
+body.dark-mode .card { background: #1e293b; border-color: #334155; } /* Блоки заданий в темном режиме */
+body.dark-mode .service-card { background: #2d3748; border-color: #4a5568; color: #f7fafc; } /* Карточки в темной теме */
+body.dark-mode .service-card h3 { color: #ffffff; } /* Заголовки карточек становятся белыми */
 
-/* ----- СЕКЦИИ-КАРТОЧКИ ----- */
+/* --- ОФОРМЛЕНИЕ КАРТОЧЕК --- */
 .card {
-    background: #ffffff; padding: 20px 24px; margin-bottom: 20px; /* Оформление белых блоков секций */
-    border-radius: 10px; box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08); /* Скругление углов и мягкая тень */
+    background: #fff; padding: 20px; margin-bottom: 20px; /* Белый фон и отступы секций */
+    border-radius: 12px; border: 1px solid #e2e8f0; /* Скругление и границы секций */
+    box-shadow: 0 4px 6px rgba(0,0,0,0.05); /* Легкая тень блоков */
 }
-.card h2 { margin: 0 0 14px; font-size: 1.1rem; color: #1e40af; } /* Оформление заголовков в карточках */
 
-/* ----- ФОРМА И КНОПКИ ----- */
-.form-group { display: flex; align-items: center; gap: 10px; margin-bottom: 12px; flex-wrap: wrap; } /* Группировка элементов управления в ряд */
-input, select { padding: 8px 10px; border: 1px solid #cbd5e1; border-radius: 6px; } /* Базовая стилизация текстовых полей и списков */
-.buttons { display: flex; gap: 10px; flex-wrap: wrap; margin-top: 4px; } /* Контейнер для кнопок с отступами между ними */
-button { padding: 8px 16px; border: none; background-color: #3b82f6; color: #fff; border-radius: 6px; cursor: pointer; } /* Общий вид кнопок */
-button:hover { background-color: #2563eb; } /* Изменение цвета кнопки при наведении курсора */
-button.btn-secondary { background-color: #64748b; } /* Стили для второстепенных кнопок серого цвета */
-button.btn-danger { background-color: #ef4444; } /* Стили для кнопок удаления красного цвета */
+.form-group { margin-bottom: 12px; display: flex; align-items: center; gap: 10px; } /* Расположение элементов формы */
+input, select { padding: 8px; border-radius: 6px; border: 1px solid #cbd5e1; } /* Стилизация полей ввода */
 
-/* ----- КАРТОЧКИ УСЛУГ (создаются через JS) ----- */
-#services-container {
-    display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 14px; /* Сетка для отображения услуг */
-}
+.buttons { display: flex; gap: 10px; flex-wrap: wrap; } /* Контейнер для кнопок */
+button { padding: 10px 16px; border: none; border-radius: 6px; background: #3b82f6; color: #fff; cursor: pointer; } /* Базовый стиль кнопок */
+button.btn-secondary { background: #64748b; } /* Серый цвет для второстепенных кнопок */
+button.btn-danger { background: #ef4444; } /* Красный цвет для кнопок удаления */
+
+/* --- КАТАЛОГ УСЛУГ --- */
+#services-container { display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: 16px; } /* Сетка каталога */
 .service-card {
-    background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 8px; /* Стиль отдельной карточки услуги */
-    padding: 14px 16px; display: flex; flex-direction: column; gap: 8px; /* Внутренняя компоновка контента в карточке */
-}
-.category-badge {
-    font-size: 0.75rem; padding: 2px 8px; border-radius: 20px; /* Бейдж категории внутри карточки */
-    background: #dbeafe; color: #1e40af; font-weight: bold; width: fit-content;
+    background: #f8fafc; border: 1px solid #e2e8f0; padding: 16px; /* Оформление карточки */
+    border-radius: 8px; display: flex; flex-direction: column; gap: 10px; /* Структура карточки */
 }
 
-/* ----- СОСТОЯНИЯ (Для управления через JS) ----- */
-.service-card.highlight { border-color: #f59e0b; background: #fffbeb; box-shadow: 0 0 0 2px #fcd34d; } /* Подсветка карточек (избранное/разработка) */
-.service-card.hidden { display: none; } /* Класс для скрытия элементов при фильтрации */
-.validation-msg { color: #ef4444; font-size: 0.88rem; } /* Стиль вывода ошибок валидации */
-.empty-msg { color: #94a3b8; font-style: italic; text-align: center; } /* Оформление сообщения о пустом списке */
+/* Кнопки карточки в одну строку */
+.card-actions { display: flex; flex-direction: row; gap: 8px; margin-top: auto; } /* Расположение кнопок карточки */
+.card-actions button { flex: 1; padding: 6px; font-size: 0.85rem; } /* Растягивание кнопок карточки */
+
+/* --- КЛАССЫ СОСТОЯНИЙ --- */
+.service-card.highlight { border-color: #f59e0b; background: #fffbeb; color: #1a202c; } /* ПОЧЕМУ: Желтая подсветка для категории "Разработка" */
+.service-card.hidden { display: none !important; } /* ПОЧЕМУ: Полное скрытие элемента при фильтрации */
+
+/* НОВОЕ: Белая звезда и текст при активации избранного */
+.fav-btn.is-active { color: #ffffff !important; } /* ПОЧЕМУ: Реализация требования по изменению цвета текста на белый */
+
+.validation-msg { color: #ef4444; font-size: 0.85rem; } /* Ошибка валидации */
+.empty-msg { text-align: center; color: #94a3b8; font-style: italic; } /* Заглушка каталога */
