@@ -23,7 +23,7 @@ const demoFillBtn = document.querySelector('#demo-fill-btn');
 // Функция обновления счетчика и видимости сообщения "Пусто"
 function updateUI() {
     // ПОЧЕМУ: querySelectorAll находит актуальное число всех созданных элементов .service-card.
-    const count = document.querySelectorAll('.service-card').length; 
+    const count = servicesContainer.querySelectorAll('.service-card').length; 
     totalCount.textContent = count; // ПОЧЕМУ: textContent используется для безопасного вывода данных.
     emptyMsg.style.display = count === 0 ? 'block' : 'none'; 
 }
